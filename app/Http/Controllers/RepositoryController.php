@@ -124,10 +124,10 @@ class RepositoryController extends Controller
 
     public function fork($id)
     {
-//        $fork = Fork::findOrFail($id);
-//        $fork->update([
-//            'status' => Fork::PENDING,
-//        ]);
+        $fork = Fork::findOrFail($id);
+        $fork->update([
+            'status' => Fork::PENDING,
+        ]);
         $helper = new GithubHelper();
         $helper->postForkRepo('PhamAnhHoang', 'ITSS-pink', auth()->user()->access_token);
         return redirect()->back();
